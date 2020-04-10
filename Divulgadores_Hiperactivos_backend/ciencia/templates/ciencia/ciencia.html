@@ -1,0 +1,57 @@
+{% extends 'core/base.html'%}
+
+<!-- Tag Título-->
+{% block tittle%}
+Acerca de mi
+{% endblock %}
+
+<!-- Tag Subtítulo -->
+{%block subtitulo%}
+<h1>Ciencia</h1>
+<span class="subheading">La ciencia está en todos lados</span>
+{%endblock%}
+<!-- Tag background-->
+{% load static %}
+{% block background %} {% static 'core/img/bg2.jpg'%} {% endblock %}
+
+<!-- Tag Contenido-->
+{%block lista%}{{noticias_ciencia}}{%endblock%}
+{%block image_noticia%}{{noticias_ciencia.imagen}}{%endblock%}
+{%block tittle_noticia%}{{noticias_ciencia.titulo}}{%endblock%}
+{%block redaccion_noticia%}{{noticias_ciencia.Noticia}}{%endblock%}
+{%block url_noticia%}{{noticias_ciencia.link}}{%endblock%}
+
+{% block content %}
+ 
+  <!-- jQuert y Bootstrap -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Scripts del template -->
+  <script src="js/clean-blog.min.js"></script>
+
+{% endblock %}
+
+{%block introduccion%} 
+Lorem ipsum dolor sitelit. Sedicitur nunc.
+ed placerat justo ante, eget elementum magna aliquet nec. Maecenas egestas euismod egestas. Donec iaculis finibus tristique. Duis dignissim felis dolor, eget commodo diam feugiat eget. Quisque at elementum diam, ut lobortis turpis. Proin suscipit aliquam dolor
+, eu consectetur magna ultricies sit amet. Mauris sit amet elit eros.
+{%endblock%}
+{%block noticia%}
+    <div class="container">
+      <!-- Proyectos -->
+      {%for noticia in noticias_ciencia %}
+      <div class="row project">  	
+        <div class="col-lg-3 col-md-4 offset-lg-1">
+          <img class="img-fluid" src="{{noticia.imagen.url}}" alt="">
+        </div>
+        <div class="col-lg-7 col-md-8">
+              <h2 class="section-heading title">{{noticia.titulo}}</h2>   
+              <p>{{noticia.Noticia}}</p>
+              <p><a href="{{noticia.link}}">Más información</a></p>
+        </div>
+      </div>
+       {%endfor%}
+    </div>
+  <hr>
+{%endblock%}

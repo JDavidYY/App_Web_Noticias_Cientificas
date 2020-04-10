@@ -1,0 +1,47 @@
+{% extends 'core/base.html'%}
+
+<!-- Tag Título-->
+{% block tittle%}
+Acerca de mi
+{% endblock %}
+
+<!-- Tag Subtítulo -->
+{%block subtitulo%}
+<h1>Cultura</h1>
+<span class="subheading">La cultura la formamos todos </span>
+{%endblock%}
+<!-- Tag background-->
+{% load static %}
+{% block background %} {% static 'core/img/bg4.jpg'%} {% endblock %}
+
+<!-- Tag Contenido-->
+
+{%block introduccion%}
+ed placerat justo ante, eget elementum magna aliquet nec. Maecenas egestas euismod egestas. Donec iaculis finibus tristique. Duis dignissim felis dolor, eget commodo diam feugiat eget. Quisque at elementum diam, ut lobortis turpis. Proin suscipit aliquam dolor
+, eu consectetur magna ultricies sit amet. Mauris sit amet elit eros.Lorem ipsum dolor sit amet, consectetur adipis.
+ {%endblock%}
+{%block noticia%}
+    <div class="container">
+      <!-- Proyectos -->
+      {%for noticia in noticias_cultura %}
+      <div class="row project">  	
+          <div class="col-lg-3 col-md-4 offset-lg-1">
+               <img class="img-fluid" src="{{noticia.imagen.url}}" alt="">
+          </div>
+        <div class="col-lg-7 col-md-8">
+               <h2 class="section-heading title">{{noticia.titulo}}</h2>   
+          <p>{{noticia.Noticia}}</p>
+          <p><a href="{{noticia.link}}">Más información</a></p>
+          </div>
+   
+      {%endfor%}
+    </div>
+  <hr>
+{%endblock%}
+
+{% block content %}    
+          <!-- Bootstrap y Javascripts -->
+          <script src="vendor/jquery/jquery.min.js"></script>
+          <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <script src="js/clean-blog.min.js"></script>
+{% endblock %}
